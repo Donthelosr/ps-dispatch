@@ -65,7 +65,7 @@ local function VehicleTheft(vehicle)
             z = currentPos.z
         },
         dispatchMessage = _U('vehicletheft'),
-        job = { "police" }
+        job = { "police", "bcso", "sasp"}
     })
 end
 
@@ -107,7 +107,7 @@ local function VehicleShooting(vehdata)
             z = currentPos.z
         },
         dispatchMessage = _U('vehicleshots'),
-        job = { "police" }
+        job = { "police", "bcso", "sasp"}
     })
 end
 
@@ -125,7 +125,7 @@ local function Shooting()
 
     TriggerServerEvent("dispatch:server:notify", {
         dispatchcodename = "shooting", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-11",
+        dispatchCode = "10-13",
         firstStreet = locationInfo,
         gender = gender,
         weapon = weapon,
@@ -140,7 +140,7 @@ local function Shooting()
             z = currentPos.z
         },
         dispatchMessage = _U('shooting'),
-        job = { "police" }
+        job = { "police", "bcso", "sasp"}
     })
 
 end
@@ -155,8 +155,8 @@ local function SpeedingVehicle(vehdata)
         dispatchcodename = "speeding", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
         dispatchCode = "10-11",
         firstStreet = locationInfo,
-        model = vehdata.name,
-        plate = vehdata.plate,
+        model = nil,
+        plate = nil,
         priority = 2,
         firstColor = vehdata.colour,
         heading = heading,
@@ -167,37 +167,37 @@ local function SpeedingVehicle(vehdata)
             z = currentPos.z
         },
         dispatchMessage = _U('speeding'),
-        job = { "police" }
+        job = { "police", "bcso", "sasp"}
     })
 end
 
 exports('SpeedingVehicle', SpeedingVehicle)
 
-local function Fight()
-    local currentPos = GetEntityCoords(PlayerPedId())
-    local locationInfo = getStreetandZone(currentPos)
-    local gender = GetPedGender()
-    TriggerServerEvent("dispatch:server:notify", {
-        dispatchcodename = "fight", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-10",
-        firstStreet = locationInfo,
-        gender = gender,
-        model = nil,
-        plate = nil,
-        priority = 2,
-        firstColor = nil,
-        automaticGunfire = false,
-        origin = {
-            x = currentPos.x,
-            y = currentPos.y,
-            z = currentPos.z
-        },
-        dispatchMessage = _U('melee'),
-        job = { "police" }
-    })
-end
+-- local function Fight()
+--     local currentPos = GetEntityCoords(PlayerPedId())
+--     local locationInfo = getStreetandZone(currentPos)
+--     local gender = GetPedGender()
+--     TriggerServerEvent("dispatch:server:notify", {
+--         dispatchcodename = "fight", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+--         dispatchCode = "10-10",
+--         firstStreet = locationInfo,
+--         gender = gender,
+--         model = nil,
+--         plate = nil,
+--         priority = 2,
+--         firstColor = nil,
+--         automaticGunfire = false,
+--         origin = {
+--             x = currentPos.x,
+--             y = currentPos.y,
+--             z = currentPos.z
+--         },
+--         dispatchMessage = _U('melee'),
+--         job = { "police", "bcso", "sasp"}
+--     })
+-- end
 
-exports('Fight', Fight)
+-- exports('Fight', Fight)
 
 local function InjuriedPerson()
     local currentPos = GetEntityCoords(PlayerPedId())
@@ -272,7 +272,7 @@ local function StoreRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('storerobbery'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -299,7 +299,7 @@ local function FleecaBankRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('fleecabank'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -326,7 +326,7 @@ local function PaletoBankRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('paletobank'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -353,7 +353,7 @@ local function PacificBankRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('pacificbank'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -379,7 +379,7 @@ local function PrisonBreak()
             z = currentPos.z
         },
         dispatchMessage = _U('prisonbreak'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -407,7 +407,7 @@ local function VangelicoRobbery(camId)
             z = currentPos.z
         },
         dispatchMessage = _U('vangelico'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -433,7 +433,7 @@ local function HouseRobbery()
             z = currentPos.z
         },
         dispatchMessage = _U('houserobbery'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -445,7 +445,7 @@ local function YachtHeist()
     local gender = GetPedGender()
     TriggerServerEvent("dispatch:server:notify", {
         dispatchcodename = "yachtheist", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-65",
+        dispatchCode = "10-90",
         firstStreet = locationInfo,
         gender = gender,
         model = nil,
@@ -459,7 +459,7 @@ local function YachtHeist()
             z = currentPos.z
         },
         dispatchMessage = _U('yachtheist'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -471,7 +471,7 @@ local function DrugSale()
     local gender = GetPedGender()
     TriggerServerEvent("dispatch:server:notify", {
         dispatchcodename = "suspicioushandoff", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-13",
+        dispatchCode = "10-27",
         firstStreet = locationInfo,
         gender = gender,
         model = nil,
@@ -485,7 +485,7 @@ local function DrugSale()
             z = currentPos.z
         },
         dispatchMessage = _U('drugsell'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police","bcso","sasp" } -- jobs that will get the alerts
     })
 end
 
@@ -518,7 +518,7 @@ local function CarJacking(vehicle)
             z = currentPos.z
         },
         dispatchMessage = _U('carjacking'),
-        job = { "police" }
+        job = { "police","bcso","sasp" } 
     })
 end
 
@@ -531,7 +531,7 @@ local function OfficerDown()
     local callsign = QBCore.Functions.GetPlayerData().metadata["callsign"]
     TriggerServerEvent("dispatch:server:notify", {
         dispatchcodename = "officerdown", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-99",
+        dispatchCode = "10-33",
         firstStreet = locationInfo,
         name = "COP - " .. plyData.charinfo.firstname:sub(1, 1):upper() .. plyData.charinfo.firstname:sub(2) .. " " .. plyData.charinfo.lastname:sub(1, 1):upper() .. plyData.charinfo.lastname:sub(2),
         model = nil,
@@ -546,7 +546,7 @@ local function OfficerDown()
             z = currentPos.z
         },
         dispatchMessage = _U('officerdown'), -- message
-        job = { "ambulance", "police" } -- jobs that will get the alerts
+        job = { "ambulance", "police","bcso","sasp" } -- jobs that will get the alerts
     })
 end
 
@@ -563,7 +563,7 @@ local function EmsDown()
     local callsign = QBCore.Functions.GetPlayerData().metadata["callsign"]
     TriggerServerEvent("dispatch:server:notify", {
         dispatchcodename = "emsdown", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-99",
+        dispatchCode = "10-33",
         firstStreet = locationInfo,
         name = "EMS - " .. plyData.charinfo.firstname:sub(1, 1):upper() .. plyData.charinfo.firstname:sub(2) .. " " .. plyData.charinfo.lastname:sub(1, 1):upper() .. plyData.charinfo.lastname:sub(2),
         model = nil,
@@ -578,7 +578,7 @@ local function EmsDown()
             z = currentPos.z
         },
         dispatchMessage = _U('emsdown'), -- message
-        job = { "ambulance", "police" } -- jobs that will get the alerts
+        job = { "ambulance", "police","bcso","sasp" } -- jobs that will get the alerts
     })
 end
 
@@ -594,7 +594,7 @@ local function Explosion()
     local gender = GetPedGender()
     TriggerServerEvent("dispatch:server:notify", {
         dispatchcodename = "explosion", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
-        dispatchCode = "10-80",
+        dispatchCode = "10-73",
         firstStreet = locationInfo,
         gender = nil,
         model = nil,
@@ -608,7 +608,7 @@ local function Explosion()
             z = currentPos.z
         },
         dispatchMessage = "Explosion Reported", -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -634,7 +634,7 @@ local function SuspiciousActivity()
             z = currentPos.z
         },
         dispatchMessage = _U('susactivity'), -- message
-        job = { "police" } -- jobs that will get the alerts
+        job = { "police", "bcso", "sasp"} -- jobs that will get the alerts
     })
 end
 
@@ -645,7 +645,7 @@ local function CustomAlert(data)
     local coords = data.coords or vec3(0.0, 0.0, 0.0)
     local gender = GetPedGender()
     if not data.gender then gender = nil end 
-    local job = { "police" }
+    local job = { "police", "bcso", "sasp"}
     if data.job then job = data.job end
 
 
@@ -688,3 +688,5 @@ local function CustomAlert(data)
     })
 end
 exports('CustomAlert', CustomAlert)
+
+

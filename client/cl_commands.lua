@@ -7,6 +7,30 @@ local phoneModel = Config.PhoneModel
 -- Item checks to return whether or not the client has a phone or not
 local function HasPhone()
     return QBCore.Functions.HasItem("phone")
+    or QBCore.Functions.HasItem("white_phone") 
+    or QBCore.Functions.HasItem("white_phone") 
+    or QBCore.Functions.HasItem("red_phone")
+    or QBCore.Functions.HasItem("pink_phone")
+    or QBCore.Functions.HasItem("greenlight_phone")
+    or QBCore.Functions.HasItem("green_phone")
+    or QBCore.Functions.HasItem("purple_phone")
+    or QBCore.Functions.HasItem("blue_phone")
+    or QBCore.Functions.HasItem("black_phone")
+    or QBCore.Functions.HasItem("classic_phone")
+    or QBCore.Functions.HasItem("gold_phone")
+    or QBCore.Functions.HasItem("phone")
+    ---
+    -- or QBCore.Functions.HasItem("wet_white_phone") 
+    -- or QBCore.Functions.HasItem("wet_white_phone") 
+    -- or QBCore.Functions.HasItem("wet_red_phone")
+    -- or QBCore.Functions.HasItem("wet_pink_phone")
+    -- or QBCore.Functions.HasItem("wet_greenlight_phone")
+    -- or QBCore.Functions.HasItem("wet_green_phone")
+    -- or QBCore.Functions.HasItem("wet_purple_phone")
+    -- or QBCore.Functions.HasItem("wet_blue_phone")
+    -- or QBCore.Functions.HasItem("wet_black_phone")
+    -- or QBCore.Functions.HasItem("wet_gold_phone")
+    -- or QBCore.Functions.HasItem("wet_classic_phone")
 end
 
 
@@ -86,7 +110,7 @@ RegisterCommand('911', function(source, args, rawCommand)
                     },
                     dispatchMessage = "Incoming Call", -- message
                     information = msg,
-                    job = {"police", "ambulance"} -- jobs that will get the alerts
+                    job = {"police","bcso","sasp", "ambulance"} -- jobs that will get the alerts
                 })
                 Wait(1000)
                 DeletePhone()

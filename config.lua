@@ -3,32 +3,32 @@ Config = {}
 Config.Enable = {}
 Config.Timer = {}
 
-Config.PoliceJob = { "police", "bcso"}
+Config.PoliceJob = { "police", "bcso","sasp"}
 
 -- Enable if you only want to send alerts to onDuty officers
 Config.OnDutyOnly = false
 
-Config.PoliceAndAmbulance = { "police", "ambulance", "bcso"}
+Config.PoliceAndAmbulance = { "police", "ambulance", "bcso","sasp"}
 Config.PhoneModel = 'prop_npc_phone_02'
 
 -- sets report chance to 100%
-Config.DebugChance = true
+Config.DebugChance = false
 
 -- Explosion Alert Types (Gas Pumps by default)
 -- Ex.  Config.ExplosionTypes = {1, 2, 3, 4, 5}
 Config.ExplosionTypes = {9}
 
 -- enable default alerts
-Config.Enable.Speeding = true
+Config.Enable.Speeding = false
 Config.Enable.Shooting = true
-Config.Enable.Autotheft = true
-Config.Enable.Melee = true
+Config.Enable.Autotheft = false
+Config.Enable.Melee = false
 Config.Enable.PlayerDowned = true
 ---------------------------------------------------------------
 Config.Locale = 'en'
 
 -- enable alerts when cops break the law and print to console
-Config.Debug = true
+Config.Debug = false
 
 -- changes the min and max offset for the radius
 Config.MinOffset = 1
@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
 
     -- if notLoaded then
         for k, v in pairs(Config.Enable) do
-            print(k, v, json.encode(v))
+            -- print(k, v, json.encode(v))
             if Config.Enable[k] ~= false then
                 Config[k] = {}
                 Config.Timer[k] = 0 -- Default to 0 seconds
@@ -75,7 +75,8 @@ Citizen.CreateThread(function()
         'WEAPON_FIREEXTINGUISHER',
         'WEAPON_HAZARDCAN',
         'WEAPON_RAYCARBINE',
-        'WEAPON_STUNGUN'
+        'WEAPON_STUNGUN',
+        'WEAPON_PLASMAP',
     }
 
     Config.Colours = {

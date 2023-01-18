@@ -1,6 +1,29 @@
 ---------------------------
 ----rainmad scripts--------
 ---------------------------
+local function MethRuns()
+    local currentPos = GetEntityCoords(PlayerPedId())
+    local locationInfo = getStreetandZone(currentPos)
+    local gender = GetPedGender()
+    TriggerServerEvent("dispatch:server:notify",{
+        dispatchcodename = "methruns", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+        dispatchCode = "10-31",
+        firstStreet = locationInfo,
+        gender = gender,
+        model = nil,
+        plate = nil,
+        priority = 2, -- priority
+        firstColor = nil,
+        automaticGunfire = false,
+        origin = {
+            x = currentPos.x,
+            y = currentPos.y,
+            z = currentPos.z
+        },
+        dispatchMessage = ('Suspicious Drug Activity'), -- message
+        job = {"police"} -- jobs that will get the alerts
+    })
+end exports('MethRuns', MethRuns)
 
 local function ArtGalleryRobbery()
     local currentPos = GetEntityCoords(PlayerPedId())
@@ -117,7 +140,7 @@ local function UndergroundRobbery()
             y = currentPos.y,
             z = currentPos.z
         },
-        dispatchMessage = _U('underground'), -- message
+        dispatchMessage = "Bobcat Heist", -- message
         job = {"police"} -- jobs that will get the alerts
     })
 end exports('UndergroundRobbery', UndergroundRobbery)
@@ -181,7 +204,7 @@ local function CarBoosting(vehicle)
         firstStreet = locationInfo,
         gender = gender,
         model = vehdata.name,
-        plate = vehdata.plate,
+        plate = nil,
         priority = 2,
         firstColor = vehdata.colour,
         automaticGunfire = false,
@@ -222,3 +245,4 @@ local function SignRobbery()
         job = {"police"} -- jobs that will get the alerts
     })
 end exports('SignRobbery', SignRobbery)
+
